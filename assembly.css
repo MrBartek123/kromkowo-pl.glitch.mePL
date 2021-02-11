@@ -1,0 +1,406 @@
+.half-screen{
+	height: 70%;
+}
+
+html, body, .container-fluid, .row, #assembly_firstCol, #assembly_secondCol, .panel-body, .full-screen{
+	height: 100%;
+	overflow: hidden;
+}
+
+
+.container-fluid {
+	padding: 15px;
+}
+@media (min-width: 768px) {
+	/*html, body, .container-fluid {
+		overflow: hidden;
+	}*/
+}
+	
+#assembly_instructions li {
+	width: 100%;
+	z-index: 100;
+}
+
+#assembly_btn_start_test, #assembly_acceptSolution, #assembly_rejectSolution, #urlModal {
+	position: fixed;
+	bottom: 5px;
+	width: 23%;
+	height: 41px;
+}
+
+#assembly_step, #assembly_send, #assembly_runMe, #assembly_edit {
+	position: fixed;
+	bottom: 57px;
+	height: 41px;
+	width: 23%;
+}
+
+#assembly_toLesson, #assembly_toPanel, #assembly_toTasks {
+	position: fixed;
+	bottom: 109px;
+	height: 41px;
+	width: 23%;
+}
+
+#assembly_btn_start_test.lg, #assembly_runMe.lg, #assembly_edit.lg, #assembly_toLesson.lg, #assembly_toPanel.lg, #assembly_acceptSolution.lg, #assembly_rejectSolution.lg, #assembly_toTasks.lg, #urlModal.lg {
+	width: 31%;
+}
+
+#assembly_editor{
+	min-height: 73%;
+}
+
+#assembly_console{
+	overflow: auto;
+	height: 90%;
+	max-height: 90%;
+}
+
+#assembly_modalBody{
+	cursor: text;
+}
+
+#assembly_editorPreview {
+	overflow: auto;
+	height: calc(95vh - 180px);
+	max-height: 94%;
+}
+#assembly_instrPreview .panel-body {
+	overflow: inherit;
+}
+#assembly_consolePreview {
+	display: none;
+}
+
+#assembly_instrPreview .list-group {
+	margin-bottom : 0px !important;
+}
+
+#assembly_instrPreview ul {
+	margin-bottom: 5px !important;
+}
+
+.on-editor.println{
+	height: 56px;
+}
+.on-editor.println strong {
+	position: relative;
+	top: 8px;
+}
+
+.marg{
+	margin-top: 7px;
+}
+
+.form-control-inline {
+	min-width: 0;
+	width: auto;
+	display: inline;
+}
+
+.keyboard-ipad {
+	min-width: 0;
+	width: auto;
+	display: inline;
+}
+
+.keyboard-num{
+	min-width: 0;
+	width: 100px;
+	display: inline;
+}
+
+.keyboard-symbol{
+	min-width: 0;
+	width: 50px;
+	display: inline;
+}
+
+.input-error {
+  border-color: #006600;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 4px 4px #ce8483;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 4px 4px #ce8483;
+}
+
+#assembly_readInput {
+  border-color: #006600;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 4px 4px #009900;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 4px 4px #009900;
+}
+
+.list-group-item-success {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.selected-jumper {
+	background: #f0ad4e !important;
+	color: #fff !important;
+}
+
+.modal-backdrop {
+	z-index: 960;
+}
+
+.modal {
+	z-index: 980;
+}
+
+.modal-content {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.my-block-page {
+	border: none; 
+	padding: 15px;
+	background-color: #000;
+	-webkit-border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	opacity: .5; 
+	color: #fff; 
+}
+
+#assembly_tableError {
+	background: #fffcf9;
+	table-layout: fixed;
+	width: 100%;
+}
+#assembly_tableError th {
+	background: #ffefdf;
+	font-weight: bold;
+}
+#assembly_tableError td, #assembly_tableError th {
+	border: 1px solid grey;
+	padding: 3px;
+}
+
+#assembly_selectedTask {
+	margin-bottom: 20px;
+}
+
+#assembly_modalToTest .modal-dialog {
+	width: 80%;
+}
+
+.ramka {
+	border: medium solid rgb(126, 76, 11);
+	border-radius: 10px;
+	background-color: rgba(255, 155, 28, 0.21);
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.toggle {
+	display: none;
+}
+.more .expand {
+	overflow: visible;
+}
+
+.more .toggle:checked ~ .expand {
+	height: 100%;
+}
+
+.clic_task {
+	font-size: small;
+	text-decoration: underline;
+}
+
+#assembly_instructions li,
+#assembly_editor input,
+#assembly_editor select,
+#assembly_editor li,
+#assembly_cases li {
+	font-size: 17px;
+	font-family: Sans-Serif;
+}
+
+.panel-title {
+	font-size: 22px;
+}
+
+#assembly_console h4 {
+	font-size: 20px;
+}
+
+.panel-task h4, .panel-task h3, .panel-task button i {
+	display: inline-block;
+}
+
+.panel-task-title {
+	float: right;
+}
+
+.panel-task  i {
+	float: right;
+	margin-right: 0.5em;
+	position: relative;
+	cursor: pointer;
+	font-size: 24px;
+}
+
+.panel-task  button i {
+	text-align: left;
+	top: 50%;
+	left: 50%;
+	height: 50%;
+}
+
+.tooltip-inner {
+	text-align:left;
+}
+
+.panel-task-button:hover, .panel-solution-button:hover {
+	color: lightgreen;
+	transition-duration: 0.5s;
+}
+
+@media screen and (max-height: 770px) {
+	#assembly_instrPreview #assembly_instructions li,
+	#assembly_instrPreview #assembly_editor input,
+	#assembly_instrPreview #assembly_editor select,
+	#assembly_instrPreview #assembly_editor li,
+	#assembly_instrPreview #assembly_cases li {
+		font-size: 16px;
+	}
+	#assembly_instrPreview .list-group-item {
+		padding: 5px 8px;
+	}
+}
+
+@media screen and (max-height: 650px) {
+	#assembly_instrPreview #assembly_instructions li,
+	#assembly_instrPreview #assembly_editor input,
+	#assembly_instrPreview #assembly_editor select,
+	#assembly_instrPreview #assembly_editor li,
+	#assembly_instrPreview #assembly_cases li {
+		font-size: 13px;
+	}
+	#assembly_instrPreview .list-group-item {
+		padding: 5px 4px;
+	}
+}
+
+.assembly_chat {
+	font-family: helvetica;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.chat {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	max-width: 500px;
+}
+
+.messages {
+	display: flex;
+	flex-direction: column;
+}
+
+.message {
+	border-radius: 20px;
+	padding: 8px 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
+	display: inline-block;
+	min-width: 50%;
+	word-break: break-word;
+	word-break: break-all;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+.yours .message.last:before, .mine .message.last:before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	bottom: 0;
+	height: 20px;
+	width: 20px;
+	background-attachment: fixed;
+}
+
+.yours .message.last:after, .mine .message.last:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	width: 10px;
+	height: 20px;
+	background: white;
+}
+
+.yours {
+	align-items: flex-start;
+	text-align: left;
+}
+
+.yours .message {
+	background-color: #eee;
+	position: relative;
+	border: solid #aaa 2px;
+}
+
+.yours .message.last:before {
+	left: -8px;
+	background: #eee;
+	border-bottom-right-radius: 15px;
+	border-bottom: solid #aaa 2px;
+	border-right: solid #eee 2px;
+}
+
+.yours .message.last:after {
+	left: -10px;
+	border-bottom-right-radius: 10px;
+	border-right: solid #aaa 2px;
+}
+
+.mine {
+	align-items: flex-end;
+	text-align: right;
+}
+
+.mine .message {
+	color: white;
+	background-color: #337ab7;
+	background-attachment: fixed;
+	position: relative;
+	border: solid #034a87 2px;
+}
+
+.mine .message.last:before {
+	right: -8px;
+	background-color: #337ab7;
+	border-bottom-left-radius: 15px;
+	border-bottom: solid #034a87 2px;
+	border-left: solid #337ab7 2px;
+}
+
+.mine .message.last:after {
+	right: -10px;
+	border-bottom-left-radius: 10px;
+	border-left: solid #034a87 2px;
+}

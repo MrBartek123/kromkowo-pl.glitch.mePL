@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Assembly</title>
+		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link href="jqueryui/themes-ui-darkness-jquery-ui-1.10.3.css" rel="stylesheet">
+		<link href="jqueryui/lightness-jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+	 	<script src="jquery/jquery-1.11.1.min.js" type="text/javascript" ></script>
+		<script src="jqueryui/jquery.ui.touch-punch-0.2.2.min.js"></script>
+		<script src="jqueryui/jquery-ui-1.10.3.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="jquery/jquery.keyboard.js"></script>
+		<script src="jqueryblockui/jquery.blockUI.2.70.0.js"></script>
+		
+		<link href="assembly_keyboard.css?version=201803190806" rel="stylesheet" >
+		<link href="assembly.css?version=201803190806" rel="stylesheet" type="text/css" />
+		
+		<script src="assembly.js?version=201803190806" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.3";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		<div id="modal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Link do Twojego programu:</h4>
+					</div>
+					<div  class="modal-body">
+						<input type="text" class="form-control" id="modalBody" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Zamknij</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<div class="container-fluid noselect">
+			<div class="row">
+				<div id="assembly_firstCol" style="display : none" class="col-sm-3 ">
+					<div id="assembly_boxesPreview" class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Pudełka</h3>
+						</div>
+						<div class="panel-body">
+							<ul id="assembly_cases" class="list-group">
+								<li id="assembly_box_0" class="ui-state-default list-group-item">A: 0</li>
+								<li id="assembly_box_1" class="ui-state-default list-group-item">B: 0</li>
+								<li id="assembly_box_2" class="ui-state-default list-group-item">C: 0</li>
+								<li id="assembly_box_3" class="ui-state-default list-group-item">D: 0</li>
+							</ul>
+						</div>
+					</div>
+					<div id="assembly_alertRead" style="display: none;" class="alert alert-danger" role="alert">
+						<button type="button" class="close" data-hide="alert"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+						<strong>Błąd!</strong> Uzupełnij poniższe pole.
+					</div>
+					<strong>
+						<input id="assembly_readInput" style="display: none" type="text" class="form-control ui-keyboard-input ui-widget-content ui-corner-all" aria-haspopup="true" role="textbox">
+					</strong>
+					<div id="assembly_step" style="display: none;" class="btn btn-primary btn-lg btn-block">
+						<span class="glyphicon glyphicon-arrow-right"></span> Zrób krok
+					</div>
+					<div id="assembly_send" style="display: none;" class="btn btn-success btn-lg btn-block">
+						<span class="glyphicon glyphicon-send"></span> Wyślij
+					</div>
+				</div>
+				<div id="assembly_secondCol" class="col-sm-8">
+					<div class="panel panel-primary full-screen">
+						<div class="panel-heading ">
+							<div class="panel-task">
+								<h3 class="panel-title">Edytor </h3>
+								<h3 class="panel-title panel-task-title"></h3>
+								<i data-html="true" data-toggle="tooltip" data-placement="bottom" title="Zapisz jako rozwiązanie wzorcowe" class="fa fa-save panel-save-button" style="display: none"></i>
+								<i data-html="true" data-toggle="tooltip" data-placement="bottom" title="Zobacz rozwiązanie wzorcowe" class="fa fa-lightbulb-o panel-solution-button" style="display: none"></i>
+								<i data-html="true" data-toggle="tooltip" data-placement="bottom" title="Zobacz treść zadania" class="fa fa-eye panel-task-button" style="display: none"></i>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div id="assembly_editorPreview">
+								<div id="assembly_alertInfo" class="alert alert-success" role="alert">
+									<button type="button" class="close" data-hide="alert"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+									<strong> Przeciągnij i upuść intrukcje poniżej. </strong>
+								</div>
+								<div id="assembly_alertEditor" style="display: none;" class="alert alert-danger" role="alert">
+									<button type="button" class="close" data-hide="alert"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+									<strong>Błąd!</strong> Uzupełnij podświetlone pola i spróbuj jeszcze raz.
+								</div>
+								<div id="assembly_alertEmpty" style="display: none;" class="alert alert-warning" role="alert">
+									<button type="button" class="close" data-hide="alert"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+									<strong>Uwaga!</strong> Przeciągnij co najmniej jedną instrukcję do edytora.
+								</div>
+								<div id="assembly_alertOK" style="display: none;" class="alert alert-success" role="alert">
+									<button type="button" class="close" data-hide="alert"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+									<strong>Program zakończony.</strong>
+								</div>
+								<ul id="assembly_editor" class="list-group ui-sortable ui-droppable">
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="assembly_thirdCol" class="col-sm-4">
+					<div id="assembly_instrPreview" class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Instrukcje</h3>
+						</div>
+						<div class="panel-body">
+							<ul id="assembly_instructions" class="list-group">
+								<li class="list-group-item ui-state-default pointer print-box ui-draggable">
+									<strong>
+										Wypisz pudełko
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer print-string ui-draggable">
+									<strong>
+										Wypisz napis 
+										<input type="text" style="display: none;" class="input-data keyboard-ipad form-control">
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer println ui-draggable">
+									<strong>
+										Przejdź do nowej linii
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer read ui-draggable">
+									<strong>
+										Wczytaj
+										<span style="display: none;"> do </span>
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer set ui-draggable">
+									<strong>
+										Ustaw 
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>	
+										<span style="display: none;"> na </span>
+										<input style="display: none;" type="text" class="input-data keyboard-num form-control">
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer increase ui-draggable">
+									<strong>
+									Zwiększ 
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>	
+										<span style="display: none;"> o </span>
+										<input style="display: none;" type="text" class="input-data keyboard-num form-control">
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer decrease ui-draggable">
+									<strong>
+										Zmniejsz 
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>
+										<span style="display: none;"> o </span>
+										<input style="display: none;" type="text" class="input-data keyboard-num form-control">
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer if ui-draggable">
+									<strong style=" display: inline-block;">
+										Jeżeli 
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>
+										<select style="display: none;" class="select-sign form-control form-control-inline">
+											<option value="0">&lt;</option>
+											<option value="1">≤</option>
+											<option value="2">=</option>
+											<option value="3">≠</option>
+											<option value="4">≥</option>
+											<option value="5">&gt;</option>
+										</select>
+										<input style="display: none;" type="text" class="input-data keyboard-num form-control">
+									</strong>
+									<strong style="display: inline-block;">
+										<span style="display: none;"> skocz do </span>
+										<select style="display: none;" class="select-line form-control form-control-inline">
+											<option value="n">następnej</option>
+											<option value="0">1</option>
+											<option value="1">końca</option>
+										</select>
+									</strong>
+									<strong style="display: inline-block;">
+										<span style="display: none;"> inaczej skocz do </span>
+										<select style="display: none;" class="select-line form-control form-control-inline">
+											<option value="n">następnej</option>
+											<option value="0">1</option>
+											<option value="1">końca</option>
+										</select>
+									</strong>
+								</li>
+								<li class="list-group-item ui-state-default pointer goto ui-draggable">
+									<strong>
+										Skocz do 
+										<select style="display: none;" class="select-line form-control form-control-inline">
+											<option value="0">1</option>
+											<option value="1">końca</option>
+										</select>
+									</strong>
+								</li>
+								<!--<li class="list-group-item ui-state-default pointer print-symbol ui-draggable">
+									<strong>
+										Wypisz pudełko
+										<select style="display: none;" class="select-box form-control form-control-inline">
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">C</option>
+											<option value="3">D</option>
+										</select>
+										<span> jako symbol </span>
+									</strong>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+					<div id="assembly_consolePreview" class="panel panel-primary half-screen">
+						<div class="panel-heading">
+							<h3 class="panel-title">Konsola</h3>
+						</div>
+						<div class="panel-body">
+							<div id="assembly_console" class="form-control assembly_chat">
+								<h4><span style="background-color: gray">&nbsp;</span></h4>
+							</div>
+						</div>
+					</div>
+					
+					<div id="urlModal"  class="btn btn-info btn-lg btn-block lg" data-toggle="modal" data-target="#modal">
+						<span class="glyphicon glyphicon-star"></span> Generuj link
+					</div>
+					<div id="assembly_runMe" class="btn btn-success btn-lg btn-block lg">
+						<span class="glyphicon glyphicon-play"></span> Uruchom
+					</div>
+					<div id="assembly_edit" style="display: none;" class="btn btn-warning btn-lg btn-block lg">
+						<span class="glyphicon glyphicon-edit"></span> Edytuj
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
